@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lano="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Enter The Numbers</h2>
+    <input type="text" id="number">
+    <input type="submit" value="Shuffle" onclick=shuffle()>
+    <p id="show"></p>
+    <p id="shuffle"></p>
+
+    <input type="submit" value="Count" onclick=countNumber()>
+    <p id="count"></p>
+    <p id="result"></p>
+    <script>
+        //Golobal variable
+        let shuffleNo = "";
+        function shuffle() {
+            let n = document.getElementById('number').value
+            //Converts all the numbers to words
+            let number = n.replaceAll('0', 'zero').replaceAll('1', 'one')
+                .replaceAll('2', 'two').replaceAll('3', 'three').replaceAll('4', 'four')
+                .replaceAll('5', 'five').replaceAll('6', 'six').replaceAll('7', 'seven')
+                .replaceAll('8', 'eight').replaceAll('9', 'nine')
+
+            document.getElementById('show').innerHTML = "Value is: " + number
+
+            //Shuffle all the charecters
+            let arr = number.split('') //converting into array
+            for (let i = 0; i < number.lenoth - 1; i++) {
+                //Its taking random no which will swap with indexes
+                let j = Math.floor(Math.random() * (number.length))
+
+                //Swaped the array elements with random indexes
+                let temp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = temp
+
+            }
+            shuffleNo = arr.join('')
+
+            document.getElementById('shuffle').innerHTML = "Shuffled Value is: " + shuffleNo
+
+        }
+
+        function countNumber() {
+            let x = shuffleNo.toString()
+            let charCount = {}
+            for (let char of x) {
+                if (charCount[char]) {
+                    charCount[char]++
+                }
+                else {
+                    charCount[char] = 1
+                }
+                console.log(charCount)
+            }
+            let data = JSON.stringify(charCount)
+            document.getElementById("count").innerHTML = data
+
+           
+            let result = {}
+            if (charCount["z"]!= undefined && charCount["z"] > 0) {
+                result["zero"] = charCount["z"]
+                charCount["e"] -= charCount["z"]
+                charCount["r"] -= charCount["z"]
+                charCount["o"] -= charCount["z"]
+                charCount["z"] = 0
+            }
+            if (charCount["w"]!= undefined && charCount["w"] > 0) {
+                result["two"] = charCount["w"]
+                charCount["t"] -= charCount["w"]
+                charCount["o"] -= charCount["w"]
+                charCount["w"] = 0
+            }
+            if (charCount["u"]!= undefined && charCount["u"] > 0) {
+                result["four"] = charCount["u"]
+                charCount["f"] -= charCount["u"]
+                charCount["o"] -= charCount["u"]
+                charCount["r"] -= charCount["u"]
+                charCount["u"] = 0
+            }
+            if (charCount["x"]!= undefined && charCount["x"] > 0) {
+                result["six"] = charCount["x"]
+                charCount["s"] -= charCount["x"]
+                charCount["i"] -= charCount["x"]
+                charCount["x"] = 0
+            }
+            if (charCount["g"]!= undefined && charCount["g"] > 0) {
+                result["eight"] = charCount["g"]
+                charCount["e"] -= charCount["g"]
+                charCount["i"] -= charCount["g"]
+                charCount["h"] -= charCount["g"]
+                charCount["t"] -= charCount["g"]
+                charCount["g"] = 0
+                
+            }
+            if (charCount["o"]!= undefined && charCount["o"] > 0) {
+                result["one"] = charCount["o"]
+                charCount["n"] -= charCount["o"]
+                charCount["e"] -= charCount["o"]
+                charCount["o"] = 0
+             }
+             if (charCount["h"]!= undefined && charCount["h"] > 0) {
+                result["three"] = charCount["h"]
+                charCount["t"] -= charCount["h"]
+                charCount["r"] -= charCount["h"]
+                charCount["e"] -= charCount["h"]
+                charCount["e"] -= charCount["h"]
+                charCount["h"] = 0
+             }
+             if (charCount["f"]!= undefined && charCount["f"] > 0) {
+                result["five"] = charCount["f"]
+                charCount["i"] -= charCount["f"]
+                charCount["v"] -= charCount["f"]
+                charCount["e"] -= charCount["f"]
+                charCount["f"] = 0
+             }
+             if (charCount["s"]!= undefined && charCount["s"] > 0) {
+                result["seven"] = charCount["s"]
+                charCount["e"] -= charCount["s"]
+                charCount["v"] -= charCount["s"]
+                charCount["e"] -= charCount["s"]
+                charCount["n"] -= charCount["s"]
+                charCount["s"] = 0
+             }
+             else { 
+                result["nine"] = charCount["i"]
+             }
+             document.getElementById("result").innerHTML = JSON.stringify(result)
+            console.log(result);
+
+        }
+       
+    </script>
+</body>
+
+</html>

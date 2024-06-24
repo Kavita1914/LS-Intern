@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <h2>Enter The Numbers</h2>
+        <input type="text" id="number" placeholder="Enter number">
+        <input type="submit" value="Shuffle" onclick=shuffle()>
+        <p id="shuffle"></p>
+       
+        <!-- <h2>Enter The Numbers</h2>
+        <input type="text" id="number2" placeholder="Enter number"> -->
+        <input type="submit" value="Count" onclick=countNumber()>
+        <p id="count"></p>
+    </div>
+    
+
+    <script>
+        
+        //Global variable
+        let shuffleNo;
+        function shuffle() {
+            let n = document.getElementById('number').value
+            //Converts all the numbers to words means to string
+            let number = n.replaceAll('0','zero').replaceAll('1','one')
+            .replaceAll('2','two').replaceAll('3','three').replaceAll('4','four')
+            .replaceAll('5','five').replaceAll('6','six').replaceAll('7','seven')
+            .replaceAll('8','eight').replaceAll('9','nine')
+
+
+            //Shuffle all the charecters
+            let arr=number.split('')
+            for(let i=0;i<number.length-1;i++){
+                //Its taking random no which will swap with indexes
+                let j=Math.floor(Math.random()*(number.length))
+
+                //Swaped the array elements with random indexes
+                let temp=arr[i]
+                arr[i]=arr[j]
+                arr[j]=temp
+
+                // [arr[i],arr[j]]=[arr[j],arr[i]]
+            }
+            shuffleNo=arr.join('')
+
+            document.getElementById('shuffle').innerHTML = "Shuffled Value is: " + shuffleNo
+
+        }
+        function countNumber(){
+            
+
+            document.getElementById('count').innerHTML=shuffleNo
+        }
+        
+
+        
+
+
+    </script>
+</body>
+
+</html>
