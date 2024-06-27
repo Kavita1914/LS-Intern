@@ -5,18 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        p.one {
+          border-style: double;
+          border-width: 6px;
+          border-radius: 30px;
+          padding: 10px;
+          width: 25%;
+          height: 60px;
+          color: brown;
+          overflow-x:scroll;
+          overflow-y: hidden;
+          z-index:1;
+          
+        }
+
+      </style>  
 </head>
 
 <body>
-    <h2>Enter The Numbers</h2>
+    <div><h2>Enter The Numbers</h2>
     <input type="text" id="number">
     <input type="submit" value="Shuffle" onclick=shuffle()>
-    <p id="show"></p>
-    <p id="shuffle"></p>
+    <p class="one" id="show"></p>
+    <p class="one" id="shuffle"></p>
 
     <input type="submit" value="Count" onclick=countNumber()>
-    <p id="count"></p>
-    <p id="result"></p>
+    <p class="one" id="count"></p>
+    <p class="one" id="result"></p>
+    </div>
     <script>
         //Golobal variable
         let shuffleNo = "";
@@ -129,8 +146,12 @@
                 charCount["n"] -= charCount["s"]
                 charCount["s"] = 0
              }
-             else { 
+             if (charCount["i"]!= undefined && charCount["i"] > 0) {
                 result["nine"] = charCount["i"]
+                charCount["n"] -= charCount["i"]
+                charCount["n"] -= charCount["i"]
+                charCount["e"] -= charCount["s"]
+                charCount["i"] = 0
              }
              document.getElementById("result").innerHTML = JSON.stringify(result)
            
