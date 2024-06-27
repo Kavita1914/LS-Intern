@@ -48,33 +48,22 @@
     const greenLight = document.getElementById("box3");
 
     function traffic() {
-      setTimeout(function () {
-        redSignal();
-      }, 1000);
+      setTimeout(function () {redSignal();}, 1000);
 
       function redSignal() {
         greenLight.style.backgroundColor = "rgb(7, 34, 7)";
         redLight.style.backgroundColor = "red";
-        setTimeout(function () {
-          yellowSignal();
-        }, 10000);
+        setTimeout(function () {yellowSignal();}, 10000); }
 
-        function yellowSignal() {
-          redLight.style.backgroundColor = "rgb(65, 14, 14)";
-          yellowLight.style.backgroundColor = "yellow";
-          setTimeout(function () {
-            greenSignal();
-          }, 3000);
+      function yellowSignal() {
+        redLight.style.backgroundColor = "rgb(65, 14, 14)";
+        yellowLight.style.backgroundColor = "yellow";
+        setTimeout(function () {greenSignal();}, 3000); }
 
-          function greenSignal() {
-            yellowLight.style.backgroundColor = "rgb(186, 186, 106)";
-            greenLight.style.backgroundColor = "green";
-            setTimeout(function () {
-              redSignal();
-            }, 5000);
-          }
-        }
-      }
+      function greenSignal() {
+        yellowLight.style.backgroundColor = "rgb(186, 186, 106)";
+        greenLight.style.backgroundColor = "green";
+        setTimeout(function () {redSignal();}, 5000); }
     }
   </script>
 </html>
