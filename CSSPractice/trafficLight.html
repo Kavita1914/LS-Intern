@@ -27,23 +27,23 @@
         color: brown;
       } */
       .mainBox {
-          margin-left: 300px;
-          margin-top: 30px;
-          border-style: double;
-          border-radius: 20px;
-          border-width: 10px;
-          border-color: brown;
-          width: 300px;
-          background-color: black;
+        margin-left: 300px;
+        margin-top: 30px;
+        border-style: double;
+        border-radius: 20px;
+        border-width: 10px;
+        border-color: brown;
+        width: 300px;
+        background-color: black;
       }
       #box1 {
-        background-color: rgb(147, 53, 53);
+        background-color: rgb(142, 60, 60);
       }
       #box2 {
         background-color: rgb(186, 186, 106);
       }
       #box3 {
-        background-color: rgb(58, 93, 58);
+        background-color: rgb(25, 50, 25);
       }
     </style>
   </head>
@@ -52,7 +52,7 @@
       <div class="container" id="box1"></div>
       <div class="container" id="box2"></div>
       <div class="container" id="box3"></div>
-  </div>
+    </div>
     <input
       style="
         margin-left: 420px;
@@ -73,11 +73,11 @@
     const greenLight = document.getElementById("box3");
 
     function redSignal() {
-      greenLight.style.backgroundColor = "rgb(7, 34, 7)";
+      yellowLight.style.backgroundColor = ""
       redLight.style.backgroundColor = "red";
       var x = 10;
       const timer = setInterval(() => {
-        x -= 1
+        x -= 1;
         if (x == 0 || x > 0) {
           document.getElementById("box1").innerText = "0" + x;
         }
@@ -86,16 +86,16 @@
         }
       }, 1000);
       setTimeout(function () {
-        yellowSignal();
+        greenSignal();
       }, 10000);
     }
 
     function yellowSignal() {
-      redLight.style.backgroundColor = "rgb(65, 14, 14)";
+      greenLight.style.backgroundColor = ""
       yellowLight.style.backgroundColor = "yellow";
       var x = 3;
       const timer = setInterval(() => {
-        x -= 1
+        x -= 1;
         if (x == 0 || x > 0) {
           document.getElementById("box2").innerText = "0" + x;
         }
@@ -104,16 +104,16 @@
         }
       }, 1000);
       setTimeout(function () {
-        greenSignal();
+        redSignal();
       }, 3000);
     }
 
     function greenSignal() {
-      yellowLight.style.backgroundColor = "rgb(186, 186, 106)";
-      greenLight.style.backgroundColor = "green";
+      redLight.style.backgroundColor = ""
+      greenLight.style.backgroundColor = "rgb(39, 241, 39)";
       var x = 5;
       const timer = setInterval(() => {
-        x -= 1
+        x -= 1;
         if (x == 0 || x > 0) {
           document.getElementById("box3").innerText = "0" + x;
         }
@@ -122,7 +122,7 @@
         }
       }, 1000);
       setTimeout(function () {
-        redSignal();
+        yellowSignal();
       }, 5000);
     }
   </script>
