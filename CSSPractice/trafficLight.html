@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        height: 150px;
+        width: 10%;
+        margin-top: 15px;
+        border-radius: 50%;
+        shape-margin: 10px 20px;
+        margin-left: 60px;
+      }
+      #box1 {
+        background-color: rgb(65, 14, 14);
+      }
+      #box2 {
+        background-color: rgb(107, 107, 15);
+      }
+      #box3 {
+        background-color: rgb(7, 34, 7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="box1"></div>
+    <div class="container" id="box2"></div>
+    <div class="container" id="box3"></div>
+    <input
+      style="
+        margin-left: 120px;
+        margin-top: 20px;
+        font-size: 25px;
+        background-color: aqua;
+        border-radius: 20%;
+      "
+      type="button"
+      value="start"
+      id="input"
+      onclick="traffic()"
+    />
+  </body>
+  <script>
+    function traffic() {
+      let timer1 = setTimeout(blink(), 1000);
+      function blink() {
+        document.getElementById("box1").style.backgroundColor = "red";
+      //   document.getElementById("box3").style.backgroundColor = "white";
+      // }
+    }
+  </script>
+</html>
