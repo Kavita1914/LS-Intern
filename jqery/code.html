@@ -79,6 +79,59 @@
 </body>
 </html> -->
 
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <style>
+    .hidden {
+        display: none;
+    }
+
+    h1 {
+        color: rgb(229, 217, 233);
+        text-align: center;
+        font-size: 50px;
+    }
+    body {
+        background-image: url('../solarSystem/sun.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+   </style>
+    </head>
+    <body onkeydown="addBackground(event);">
+        <section class="Welcome-screen">
+            <h1>Welcome to the most amazing places</h1>
+            <h1>press Enter key to continue</h1>
+        </section>
+        <div class="main hidden">
+            <h1>Do you like this picture ? Y/N </h1>
+        </div>
+        <script>
+           function addBackground(e) {
+            console.log(event.keyCode);
+            if(e.keyCode == 13) {
+                $('.Welcome-screen').addClass('hidden')
+                $('.main').removeClass('hidden')
+            }
+            if(event.keyCode == 89) {
+                $('body').css('background-image', 'url(../solarSystem/mercury.jpg)')
+                $('h1').text("Then have a look at this one!!")
+            }
+            if(event.keyCode == 78) {
+                $('body').css('background-image', 'none')
+                $('body').css('background-color','blue')
+                $('h1').text("SORRY!!!!!")
+            }
+           }
+        </script>
+    </body>
+</html> -->
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -106,20 +159,16 @@
         <section class="Welcome-screen">
             <h1>Welcome to the most amazing places</h1>
             <h1>press Enter key to continue</h1>
-            <!-- <h1>press any key to exit</h1> -->
         </section>
         <div class="main hidden">
             <h1>Do you like this picture ? Y/N </h1>
         </div>
-        <!-- <div class="last hidden">
-            <h1>Thank you for the time you have given to us</h1>
-        </div> -->
         <script>
            function addBackground(e) {
             console.log(event.keyCode);
             if(e.keyCode == 13) {
-                $('.Welcome-screen').addClass('hidden')
-                $('.main').removeClass('hidden')
+                $('.Welcome-screen').fadeOut(1000)
+                $('.main').fadeIn(6000)
             }
             if(event.keyCode == 89) {
                 $('body').css('background-image', 'url(../solarSystem/mercury.jpg)')
