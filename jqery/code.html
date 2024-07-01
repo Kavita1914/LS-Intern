@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <style>
+    .hidden {
+        display: none;
+    }
+
+    h1 {
+        color: rgb(229, 217, 233);
+        text-align: center;
+        font-size: 50px;
+    }
+    body {
+        background-image: url('../solarSystem/sun.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+   </style>
+    </head>
+    <body>
+        <section class="Welcome-screen">
+            <h1>Welcome to the most amazing places</h1>
+            <h1>press Enter key to continue</h1>
+            <h1>press any key to exit</h1>
+        </section>
+        <div class="main hidden">
+            <h1>Do you like this picture ?</h1>
+        </div>
+        <div class="last hidden">
+            <h1>Thank you for the time you have given to us</h1>
+        </div>
+        <script>
+            $('body').on('keypress', function(event) {
+                if(event.keyCode == 13)
+                {
+                    $('.Welcome-screen').addClass('hidden');
+                    $('.main').removeClass('hidden');
+                    
+                }
+                else {
+                    $('.Welcome-screen').addClass('hidden');
+                    $('.last').removeClass('hidden');
+                }
+            });
+        </script>
+    </body>
+</html>
