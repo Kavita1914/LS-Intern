@@ -131,8 +131,7 @@
     </body>
 </html> -->
 
-
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 	<head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -182,4 +181,75 @@
            }
         </script>
     </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Fbutterfly&psig=AOvVaw1spvydp8NsxLmrbPmJpFIt&ust=1719912969255000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCKipzJ7FhYcDFQAAAAAdAAAAABAE"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: aqua;
+      }
+      #myVideo {
+        position:relative;
+        /* top: 15%; */
+        margin: auto;
+        min-width: 100%;
+        min-height: 100%;
+      }
+      .hidden {
+        display: none;
+      }
+      h1 {
+        text-align: center;
+        font-family: "Lobster", cursive;
+        color: white;
+      }
+      #panel {
+        background-color: aliceblue;
+        font-size: 20px;
+        font-family: "Lobster", cursive;
+        color: rgb(221, 102, 18);
+      }
+      button {
+        margin: auto;
+        display: block;
+        width: 300px;
+        font-family: "Lobster", cursive;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <audio controls autoplay="true" class="hidden" loop>
+      <source src="song2.mp3" type="audio/wav" />
+    </audio>
+    <video autoplay="true" loop id="myVideo" controls>
+      <source src="./vv.mp4" type="video/mp4" />
+    </video>
+    <h1 class="hidden">Welcome to the mountains!!!</h1>
+    <button class="hidden">Learn more</button>
+    <div id="panel" class="hidden">
+      Most geologists classify a mountain as a landform that rises at least
+      1,000 feet (300 meters) or more above its surrounding area. A mountain
+      range is a series or chain of mountains that are close together.
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("h1").fadeIn(6000);
+        $("button").fadeIn(6000);
+      });
+      $("button").click(function () {
+        $("#panel").toggle("slow");
+      });
+    </script>
+  </body>
 </html>
