@@ -183,7 +183,7 @@
     </body>
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -229,12 +229,14 @@
     </style>
   </head>
   <body>
-    <audio controls autoplay="true" class="hidden" loop>
-      <source src="song2.mp3" type="audio/wav" />
+    <audio controls autoplay="true" loop>
+      <source src="./krishna-tune-siddhi-flute-ringtone-download-mobcup-com-co-63013.mp3" type="audio/mp3" />
     </audio>
+
     <video autoplay="true" loop id="myVideo" controls>
       <source src="./vv.mp4" type="video/mp4" />
     </video>
+
     <h1 class="hidden">Welcome to the mountains!!!</h1>
     <button class="hidden">Learn more</button>
     <div id="panel" class="hidden">
@@ -249,6 +251,84 @@
       });
       $("button").click(function () {
         $("#panel").toggle("slow");
+      });
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Fbutterfly&psig=AOvVaw1spvydp8NsxLmrbPmJpFIt&ust=1719912969255000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCKipzJ7FhYcDFQAAAAAdAAAAABAE"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: aqua;
+      }
+      #myVideo {
+        position: relative;
+        top: 20%;
+        margin: auto;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: 0;
+      }
+      audio {
+        display: none;
+      }
+      .words {
+        display: none;
+        position: relative;
+        top: 20px;
+        left: 40px;
+        font-family: "Lobster", cursive;
+        color: fuchsia;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <audio controls autoplay="true" loop>
+      <source
+        src="./krishna-tune-siddhi-flute-ringtone-download-mobcup-com-co-63013.mp3"
+        type="audio/mp3"
+      />
+    </audio>
+
+    <video autoplay="true" loop id="myVideo" controls>
+      <source src="./vv.mp4" type="video/mp4" />
+    </video>
+
+    <span id="s1" class="words">Welcome</span>
+    <span id="s2" class="words">to</span>
+    <span id="s3" class="words">the</span>
+    <span id="s4" class="words">cherry</span>
+    <span id="s5" class="words">blossom</span>
+    <span id="s6" class="words">festival</span>
+    <h1></h1>
+    <script>
+      $(document).ready(function () {
+        $("#s1").fadeIn(3000);
+        $("#s2").fadeIn(5000);
+        $("#s3").fadeIn(7000);
+        $("#s4").fadeIn(9000);
+        $("#s5").fadeIn(11000);
+        $("#s6").fadeIn(13000);
+      });
+      $(document).click(function () {
+        $("video").remove();
+        $("body").css("background-image", "url(cc.jpeg)");
+        $("body").css("background-size", "cover");
+        $("h1").text(
+          "The cherry blossom, or sakura, is the flower of trees in Prunus subgenus Cerasus. Sakura usually refers to flowers of ornamental cherry trees, such as cultivars of Prunus serrulata, not trees grown for their fruit(although these also have blossoms). Cherry blossoms have been described as having a vanilla-like smell, which is mainly attributed to coumarin."
+        );
+        $("h1").css("color", "black");
       });
     </script>
   </body>
