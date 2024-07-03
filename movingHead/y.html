@@ -20,6 +20,14 @@
         justify-content: center;
         height: 500px;
       }
+      .button {
+        text-align: center;
+        border-radius: 20px;
+        margin-left: 900px;
+        height: 50px;
+        font-size: 30px;
+        background-color: rgb(100, 100, 219);
+    }
       @keyframes head {
         0% {
           left: 0;
@@ -46,7 +54,7 @@
     <div class="flex-div2">
       <img src="./face2.png" alt="men body" height="460px" />
     </div>
-    <button id="btn" onclick="stopFunc()" value="stop">Stop</button>
+    <button class="button" id="btn" onclick="stopFunc()" value="stop">Stop</button>
 
     <script>
       function stopFunc() {
