@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Moving Head</title>
     <style>
       #image {
         margin-top: 90px;
@@ -59,9 +59,8 @@
 
     <script>
       function stopFunc() {
-        var head = document.getElementById("btn").value;
-        // console.log("11111",head);
-        if (head == "stop") {
+        var movingHead = document.getElementById("btn").value;
+        if (movingHead == "stop") {
 
           document.getElementById("image").style.animationPlayState = "paused";
           document.getElementById("btn").value = "start";
