@@ -71,7 +71,7 @@
 
             <!-- <input readonly type="date" id="date1"> -->
             <img src="./vecteezy_coin-money-coin-and-gold-coin_19857857.png" height="40px" width="40px">
-            <input style="width: 60px; background-color: rgb(226, 43, 144);" readonly type="text" value="000">
+            <input id="coin" style="width: 60px; background-color: rgb(239, 209, 62);" readonly type="text" value="000">
           <button onclick="logOut()" type="button" class="btn btn-outline-warning">
             <img src="./vecteezy_user-account-icon-for-your-design-only_21079672.png" height="30px" width="30px">
             logout</button>
@@ -85,8 +85,11 @@
          function logOut() {
         window.location.href = "./logInPage.html"
       }
+
       // console.log("ffff", new Date(localStorage.getItem('selectedDate')));
       document.getElementById("1").innerHTML = new Date(localStorage.getItem('selectedDate'))
+      document.getElementById("coin").innerHTML = localStorage.getItem('Coins')
+
       // let today = new Date(localStorage.getItem('selectedDate'))
       // console.log("gggg", today.getDate());
       // console.log("hhhh", today.getMonth());

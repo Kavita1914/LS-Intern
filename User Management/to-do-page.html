@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background: linear-gradient(to right, #e0f7fa, #80deea);
+        font-family: 'Arial', sans-serif;
+        color: #333;
+      }
+
+      .sideDiv {
+        margin-top: 0.5px;
+        background-color: rgb(45, 48, 48);
+        height: 100vh;
+        width: 250px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: width 0.3s;
+      }
+
+      .sideDiv:hover {
+        width: 270px;
+      }
+
+      .profilePhoto {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 2px solid #4caf50;
+        margin-bottom: 10px;
+      }
+
+      .span {
+        display: inline-block;
+        font-size: 15px;
+        color: #ffffff;
+        margin-bottom: 5px;
+      }
+
+      .topDiv {
+        background-color: rgb(45, 48, 48);
+        display: flex;
+        align-items: center;
+        height: 140px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .no-underline {
+        text-decoration: none;
+      }
+
+      .btn {
+        font-size: 25px;
+        margin-top: 20px;
+        color: #ffffff;
+        transition: color 0.3s;
+      }
+
+      .btn:hover {
+        color: #4caf50;
+      }
+
+      .imgDiv {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        width: 100%;
+        opacity: 0.16;
+      }
+
+      .todo-container {
+        padding: 20px;
+      }
+
+      #todo-input {
+        width: 100%;
+        height: 70px;
+        margin: 20px 0;
+      }
+
+      .btn1 {
+        text-align: center;
+        padding: auto;
+        height: 30px;
+        width: 80px;
+        margin-left: 30px;
+        font-size: 15px;
+      }
+
+      .fancy-heading {
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3rem;
+        margin: 20px 0;
+      }
+
+      .glow {
+        color: rgb(221, 255, 0);
+        text-shadow: 0 0 5px aqua, 0 0 10px rgb(0, 255, 60),
+          0 0 15px rgb(217, 255, 0), 0 0 20px rgb(255, 149, 0),
+          0 0 25px rgb(255, 81, 0);
+        animation: glow 1.5s infinite alternate;
+        transition: transform 0.2s;
+      }
+
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 5px rgb(244, 5, 5);
+        }
+        100% {
+          text-shadow: 0 0 20px rgb(247, 223, 223);
+        }
+      }
+
+      .glow:hover {
+        transform: scale(1.1);
+      }
+
+      .todo-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .todo-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #e0e0e0;
+        transition: background-color 0.3s;
+      }
+
+      .todo-list li:last-child {
+        border-bottom: none;
+      }
+
+      .todo-list li:hover {
+        background-color: #f4dde9;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: rgb(45, 48, 48);
+        color: white;
+        box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topDiv shadow">
+      <div>
+        <span class="span">
+          <div class="profilePhoto"></div>
+          <div><strong>Kavita Kumari</strong></div>
+          <div><strong>Software Developer</strong></div>
+        </span>
+      </div>
+
+      <div style="margin: auto">
+        <h1 class="fancy-heading">
+          <span class="glow"><strong>Welcome! to the User Management Page...</strong></span>
+        </h1>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div class="sideDiv shadow">
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_id-card-icon-3d-render_37297184.png"
+            height="40px"
+            width="40px"
+          />
+          Profile</button
+        ><br />
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_3d-traveller-character-checking-map-on-phone-while-walking_36309449.png"
+            height="40px"
+            width="40px"
+          />
+          Leave</button
+        ><br />
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_3d-gold-metal-check-mark-icon-check-list-button-choice-for_19938291.png"
+            height="30px"
+            width="30px"
+          />
+          To-do list</button
+        ><br />
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_on-and-off-button-icon-shutdown-business-icon-flat_24506330.png"
+            height="30px"
+            width="30px"
+          />
+          Logout</button
+        ><br />
+      </div>
+      <div class="todo-container">
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <textarea id="todo-input" class="form-control" placeholder="Enter your New To-Do List" rows="4"></textarea>
+          <button type="button" class="btn1 btn btn-primary">Save</button>
+        </div>
+        <div>
+          <ol class="todo-list">
+            <li>
+              <span>Your first To-Do is here...Your first To-Do is here...</span>
+              <button type="button" class="btn btn-warning btn1">Remove</button>
+            </li>
+            <li>
+              <span>Your second To-Do is here...Your second To-Do is here...</span>
+              <button type="button" class="btn btn-warning btn1">Remove</button>
+            </li>
+            <li>
+              <span>Your third To-Do is here...Your third To-Do is here...</span>
+              <button type="button" class="btn btn-warning btn1">Remove</button>
+            </li>
+            <li>
+              <span>Your fourth To-Do is here...Your fourth To-Do is here...</span>
+              <button type="button" class="btn btn-warning btn1">Remove</button>
+            </li>
+            <li>
+              <span>Your fifth To-Do is here...Your fifth To-Do is here...</span>
+              <button type="button" class="btn btn-warning btn1">Remove</button>
+            </li>
+            <li>
+              <span>Your sixth To-Do is here...Your sixth To-Do is here...</span>
+              <button type="button" class="btn btn-warning btn1">Remove</button>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2024 User Management. Powered by <span style="color: #4bf135;">Logic Square</span></p>

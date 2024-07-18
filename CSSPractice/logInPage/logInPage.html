@@ -156,7 +156,7 @@
 
             // coin rewards coding started
       let currentDate = new Date();
-      let lastDate = new Date(localStorage.getItem('selectedDate'));
+      let lastDate = null
       skinColor = "blue";
       let rewardedCoin = 0;
       localStorage.setItem("Coins", rewardedCoin.toString());
@@ -164,9 +164,15 @@
       localStorage.setItem("Count", count.toString());
       localStorage.setItem("skinColor", skinColor.toString());
 
-      if (currentDate - lastDate === 0) {
+      if(lastDate == null) {
+        count = 1
+        reward()
+      }
+
+      else if (currentDate - lastDate === 0) {
         console.log("coins already rewarded");
-      } else if (currentDate - lastDate === 1) {
+      } 
+      else if (currentDate - lastDate === 1) {
         count += 1;
         if (count == 6 && skinColor == "blue") {
           skinColor == "red";
@@ -176,7 +182,8 @@
         }
         reward();
         lastDate = currentDate;
-      } else if (currentDate - lastDate > 1) {
+      } 
+      else if (currentDate - lastDate > 1) {
         count = 1;
         reward();
         lastDate = currentDate;
