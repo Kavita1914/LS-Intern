@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background: linear-gradient(to right, #e0f7fa, #80deea);
+        font-family: "Arial", sans-serif;
+        color: #333;
+        margin: 0;
+      }
+
+      .sideDiv {
+        margin-top: 0.5px;
+        background-color: rgb(45, 48, 48);
+        height: 100vh;
+        width: 250px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: width 0.3s;
+      }
+
+      .sideDiv:hover {
+        width: 270px;
+      }
+
+      .profilePhoto {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 2px solid #4caf50;
+        margin-bottom: 10px;
+      }
+
+      .span {
+        display: inline-block;
+        font-size: 15px;
+        color: #ffffff;
+        margin-bottom: 5px;
+      }
+
+      .topDiv {
+        background-color: rgb(45, 48, 48);
+        display: flex;
+        align-items: center;
+        height: 140px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .no-underline {
+        text-decoration: none;
+      }
+
+      .btn {
+        font-size: 25px;
+        margin-top: 20px;
+        color: #ffffff;
+        transition: color 0.3s;
+      }
+
+      .btn:hover {
+        color: #4caf50;
+      }
+
+      .imgDiv {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        width: 100%;
+        opacity: 0.16;
+      }
+
+      .todo-container {
+        padding: 20px;
+      }
+
+      .todo-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px 10px;
+      }
+
+      #todo-input {
+        display: flex;
+        justify-content: center;
+        width: 500px;
+        height: 70px;
+        margin: 50px auto 10px;
+      }
+
+      .btn1 {
+        margin-left: 10px;
+        font-size: 20px;
+      }
+
+      .fancy-heading {
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 3rem;
+        margin: 20px 0;
+      }
+
+      .glow {
+        color: rgb(221, 255, 0);
+        text-shadow: 0 0 5px aqua, 0 0 10px rgb(0, 255, 60),
+          0 0 15px rgb(217, 255, 0), 0 0 20px rgb(255, 149, 0),
+          0 0 25px rgb(255, 81, 0);
+        animation: glow 1.5s infinite alternate;
+        transition: transform 0.2s;
+      }
+
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 5px rgb(244, 5, 5);
+        }
+        100% {
+          text-shadow: 0 0 20px rgb(247, 223, 223);
+        }
+      }
+
+      .glow:hover {
+        transform: scale(1.1);
+      }
+
+      .todo-list {
+        list-style: circle;
+        padding: 0;
+        margin: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .todo-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+        border-bottom: 1px solid #e0e0e0;
+        transition: background-color 0.3s;
+      }
+
+      .todo-list li:hover {
+        background-color: #c4fdd6;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: rgb(45, 48, 48);
+        color: white;
+        box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .container1 {
+        background: rgb(244, 235, 235);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(39, 4, 4, 0.618);
+        width: auto;
+        height: 720px;
+        margin: 20px;
+        overflow: auto;
+      }
+
+      .container2 {
+        background: rgb(244, 235, 235);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(39, 4, 4, 0.618);
+        width: 500px;
+        height: 720px;
+        margin: 20px;
+      }
+
+      .blueDiv {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+      }
+
+      h3 {
+        text-align: center;
+        color: #000000;
+      }
+
+      label {
+        margin: 10px 0 5px;
+        display: block;
+      }
+
+      input[type="date"],
+      input[type="number"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .status {
+        margin-bottom: 20px;
+      }
+
+      .button-group {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      button {
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .save {
+        background-color: #4caf50; /* Green */
+      }
+
+      .save:hover {
+        background-color: #45a049;
+      }
+
+      .cancel {
+        background-color: #f44336; /* Red */
+      }
+
+      .cancel:hover {
+        background-color: #e73530;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ccc;
+      }
+
+      th {
+        background-color: #70b5e0; /* Green */
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2; /* Light gray */
+      }
+
+      tr:hover {
+        background-color: #e1eff3; /* Light gray on hover */
+      }
+      .divCLPL {
+        color: rgb(229, 255, 0);
+        margin-right: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 10px rgba(2, 255, 221, 0.618);
+        background-color: rgb(29, 27, 27);
+        width: 80px;
+        text-align: center;
+        border-radius: 10%;
+        font-weight: bold;
+        border-style: double;
+        border-width: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topDiv shadow">
+      <div>
+        <span class="span">
+          <div class="profilePhoto"></div>
+          <div><strong>Kavita Kumari</strong></div>
+          <div><strong>Software Developer</strong></div>
+        </span>
+      </div>
+
+      <div style="margin: auto">
+        <h1 class="fancy-heading">
+          <span class="glow"><strong>Manage your Leave here...</strong></span>
+        </h1>
+      </div>
+      <!-- Display remaining CL and PL -->
+      <div class="divCLPL">
+        <span>
+          CL: <span id="remainingCL">6</span><br />
+          PL: <span id="remainingPL">12</span>
+        </span>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div class="sideDiv shadow">
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_id-card-icon-3d-render_37297184.png"
+            height="40px"
+            width="40px"
+          />
+          Profile
+        </button>
+        <br />
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_3d-traveller-character-checking-map-on-phone-while-walking_36309449.png"
+            height="40px"
+            width="40px"
+          />
+          Leave
+        </button>
+        <br />
+        <button
+          type="button"
+          class="btn btn-link no-underline"
+          onclick="todoButton()"
+        >
+          <img
+            src="./vecteezy_3d-gold-metal-check-mark-icon-check-list-button-choice-for_19938291.png"
+            height="30px"
+            width="30px"
+          />
+          To-do list
+        </button>
+        <br />
+        <button type="button" class="btn btn-link no-underline" onclick="logOut()">
+          <img
+            src="./vecteezy_on-and-off-button-icon-shutdown-business-icon-flat_24506330.png"
+            height="30px"
+            width="30px"
+          />
+          Logout
+        </button>
+        <br />
+      </div>
+      <div class="blueDiv">
+        <div class="container1">
+          <h3><strong>List of Leaves</strong></h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Date of Application</th>
+                <th>Start Date</th>
+                <th>No. of Days</th>
+                <th>Type of Leave</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="leaveTableBody">
+              <!-- Leave list rows will be populated here -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="container2">
+          <h3><strong>Apply for Leave</strong></h3>
+
+          <label for="startDate">Start Date:</label>
+          <input type="date" id="startDate" name="startDate" required />
+
+          <label for="endDate">End Date:</label>
+          <input type="date" id="endDate" name="endDate" required />
+
+          <label for="numDays">Number of Days:</label>
+          <input
+            type="number"
+            id="numDays"
+            name="numDays"
+            required
+            min="1"
+            max="30"
+          />
+
+          <label for="leaveType">Type of Leave:</label>
+          <select id="leaveType" name="leaveType" required>
+            <option value="CL">Casual Leave (CL)</option>
+            <option value="PL">Planned Leave (PL)</option>
+          </select>
+
+          <label for="description">Description / Reason:</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            required
+          ></textarea>
+
+          <div class="button-group">
+            <button type="button" class="save" onclick="saveApplyForLeave()">
+              Apply
+            </button>
+            <button
+              type="button"
+              class="cancel"
+              onclick="cancelApplyForLeave()"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>
+        &copy; 2024 User Management. Powered by
+        <span style="color: #4bf135">Logic Square</span>
+      </p>
+    </footer>
+
+    <script>
+      function todoButton() {
+        window.location.href = "./to-do-page.html";
+      }
+      // Update remaining CL and PL
+      updateRemainingLeave();
+
+      function saveApplyForLeave() {
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
+        const numDays = parseInt(document.getElementById("numDays").value);
+        const leaveType = document.getElementById("leaveType").value;
+        const description = document.getElementById("description").value;
+
+        // Check total days for each type of leave
+        let applyForLeave =
+          JSON.parse(localStorage.getItem("applyForLeave")) || [];
+        let totalPlannedLeaveDays = 0;
+        let totalCasualLeaveDays = 0;
+
+        applyForLeave.forEach((leave) => {
+          if (leave.leaveType === "PL") {
+            totalPlannedLeaveDays += parseInt(leave.numDays);
+          } else if (leave.leaveType === "CL") {
+            totalCasualLeaveDays += parseInt(leave.numDays);
+          }
+        });
+
+        if (
+          (leaveType === "PL" && totalPlannedLeaveDays + numDays > 12) ||
+          (leaveType === "CL" && totalCasualLeaveDays + numDays > 6)
+        ) {
+          alert(
+            `Cannot apply for ${
+              leaveType === "PL" ? "Planned Leave" : "Casual Leave"
+            } because it exceeds the limit.`
+          );
+          return; // Exit function without saving
+        }
+
+        // Proceed with saving the leave application
+        const newApplyForLeave = {
+          startDate: startDate,
+          endDate: endDate,
+          numDays: numDays,
+          leaveType: leaveType,
+          description: description,
+          status: "Pending",
+        };
+
+        applyForLeave.push(newApplyForLeave);
+        localStorage.setItem("applyForLeave", JSON.stringify(applyForLeave));
+
+        // Clear the form fields after saving
+        document.getElementById("startDate").value = "";
+        document.getElementById("endDate").value = "";
+        document.getElementById("numDays").value = "";
+        document.getElementById("leaveType").value = "";
+        document.getElementById("description").value = "";
+
+        // Update the table display
+        displayLeaveList();
+      }
+
+      function updateRemainingLeave() {
+        let applyForLeave =
+          JSON.parse(localStorage.getItem("applyForLeave")) || [];
+        let totalPlannedLeaveDays = 0;
+        let totalCasualLeaveDays = 0;
+
+        applyForLeave.forEach((leave) => {
+          if (leave.status === "Approved") {
+            if (leave.leaveType === "PL") {
+              totalPlannedLeaveDays += parseInt(leave.numDays);
+            } else if (leave.leaveType === "CL") {
+              totalCasualLeaveDays += parseInt(leave.numDays);
+            }
+          }
+        });
+
+        // Update the displayed remaining CL and PL
+        document.getElementById("remainingCL").textContent =
+          6 - totalCasualLeaveDays;
+        document.getElementById("remainingPL").textContent =
+          12 - totalPlannedLeaveDays;
+      }
+
+      function cancelApplyForLeave() {
+        // Reset or clear the form fields
+        document.getElementById("startDate").value = "";
+        document.getElementById("endDate").value = "";
+        document.getElementById("numDays").value = "";
+        document.getElementById("leaveType").value = "";
+        document.getElementById("description").value = "";
+      }
+
+      function displayLeaveList() {
+        let applyForLeave =
+          JSON.parse(localStorage.getItem("applyForLeave")) || [];
+        let tableBody = document.getElementById("leaveTableBody");
+        tableBody.innerHTML = ""; // Clear existing table rows
+
+        applyForLeave.forEach((leave, index) => {
+          let row = tableBody.insertRow();
+
+          let titleCell = row.insertCell(0);
+          titleCell.textContent = `Leave ${index + 1}`;
+
+          let dateOfApplicationCell = row.insertCell(1);
+          dateOfApplicationCell.textContent = new Date().toLocaleDateString();
+
+          let startDateCell = row.insertCell(2);
+          startDateCell.textContent = leave.startDate;
+
+          let numDaysCell = row.insertCell(3);
+          numDaysCell.textContent = leave.numDays;
+
+          let leaveTypeCell = row.insertCell(4);
+          leaveTypeCell.textContent = leave.leaveType;
+
+          let statusCell = row.insertCell(5);
+          statusCell.textContent = leave.status;
+
+          let actionCell = row.insertCell(6);
+
+          // Check if status is "Approved"
+          if (leave.status === "Approved") {
+            let naSpan = document.createElement("span");
+            naSpan.textContent = "N/A";
+            actionCell.appendChild(naSpan);
+          } else {
+            let cancelButton = document.createElement("button");
+            cancelButton.className = "cancel";
+            cancelButton.textContent = "Cancel";
+            cancelButton.onclick = function () {
+              // Optionally, you can add a functionality to remove from localStorage
+              applyForLeave.splice(index, 1);
+              localStorage.setItem(
+                "applyForLeave",
+                JSON.stringify(applyForLeave)
+              );
+              displayLeaveList(); // Update the table after deletion
+              updateRemainingLeave(); // Update remaining CL and PL after deletion
+            };
+            actionCell.appendChild(cancelButton);
+          }
+        });
+      }
+
+      // Call this function to populate the table on page load
+      displayLeaveList();
+      function logOut() {
+            window.location.href = "../CSSPractice/logInPage/logInPage.html";
+        }
+    </script>
+  </body>
+</html>

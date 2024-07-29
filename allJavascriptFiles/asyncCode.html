@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <div id="maindiv"></div>
+    <script>
+      fetch("https://reqres.in/api/users?page=2")
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data.data);
+          // document.getElementById("div").innerHTML = data.data[1].email
+          const mainDiv = document.getElementById("maindiv");
+          const users = data.data;
+          users.forEach((user) => {
+            const smallDiv = document.createElement("div");
+            smallDiv.innerHTML = `<p><strong>ID: </strong><strong>${user.id}</strong></p><p><strong>Name:</strong> ${user.first_name} ${user.last_name}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <img src="${user.avatar}" alt="image of ${user.first_name}">`;
+
+            mainDiv.appendChild(smallDiv);
+          });
+        })
+        .catch((error) => console.log("error in fetching data"));
+    </script>
+  </body>
+</html>

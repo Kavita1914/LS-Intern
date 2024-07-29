@@ -1,0 +1,336 @@
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <style>
+    .hidden {
+        display: none;
+    }
+
+    h1 {
+        color: rgb(229, 217, 233);
+        text-align: center;
+        font-size: 50px;
+    }
+    body {
+        background-image: url('../solarSystem/sun.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+   </style>
+    </head>
+    <body>
+        <section class="Welcome-screen">
+            <h1>Welcome to the most amazing places</h1>
+            <h1>press Enter key to continue</h1>
+            <h1>press any key to exit</h1>
+        </section>
+        <div class="main hidden">
+            <h1>Do you like this picture ?</h1>
+        </div>
+        <div class="last hidden">
+            <h1>Thank you for the time you have given to us</h1>
+        </div>
+        <script>
+            $('body').on('keypress', function(event) {
+                if(event.keyCode == 13)
+                {
+                    $('.Welcome-screen').addClass('hidden');
+                    $('.main').removeClass('hidden');
+                    
+                }
+                else {
+                    $('.Welcome-screen').addClass('hidden');
+                    $('.last').removeClass('hidden');
+                }
+            });
+        </script>
+    </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .a {
+            color: rgb(214, 21, 21);
+            text-align: center;
+            font-size: 50px;
+        }
+        .b {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p class="a">hello</p>
+    <p class="b">and</p>
+    <p>then</p>
+    <p>bye</p>
+<script>
+    $("p").removeClass();
+</script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <style>
+    .hidden {
+        display: none;
+    }
+
+    h1 {
+        color: rgb(229, 217, 233);
+        text-align: center;
+        font-size: 50px;
+    }
+    body {
+        background-image: url('../solarSystem/sun.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+   </style>
+    </head>
+    <body onkeydown="addBackground(event);">
+        <section class="Welcome-screen">
+            <h1>Welcome to the most amazing places</h1>
+            <h1>press Enter key to continue</h1>
+        </section>
+        <div class="main hidden">
+            <h1>Do you like this picture ? Y/N </h1>
+        </div>
+        <script>
+           function addBackground(e) {
+            console.log(event.keyCode);
+            if(e.keyCode == 13) {
+                $('.Welcome-screen').addClass('hidden')
+                $('.main').removeClass('hidden')
+            }
+            if(event.keyCode == 89) {
+                $('body').css('background-image', 'url(../solarSystem/mercury.jpg)')
+                $('h1').text("Then have a look at this one!!")
+            }
+            if(event.keyCode == 78) {
+                $('body').css('background-image', 'none')
+                $('body').css('background-color','blue')
+                $('h1').text("SORRY!!!!!")
+            }
+           }
+        </script>
+    </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <style>
+    .hidden {
+        display: none;
+    }
+
+    h1 {
+        color: rgb(229, 217, 233);
+        text-align: center;
+        font-size: 50px;
+    }
+    body {
+        background-image: url('../solarSystem/sun.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+   </style>
+    </head>
+    <body onkeydown="addBackground(event);">
+        <section class="Welcome-screen">
+            <h1>Welcome to the most amazing places</h1>
+            <h1>press Enter key to continue</h1>
+        </section>
+        <div class="main hidden">
+            <h1>Do you like this picture ? Y/N </h1>
+        </div>
+        <script>
+           function addBackground(e) {
+            console.log(event.keyCode);
+            if(e.keyCode == 13) {
+                $('.Welcome-screen').fadeOut(1000)
+                $('.main').fadeIn(6000)
+            }
+            if(event.keyCode == 89) {
+                $('body').css('background-image', 'url(../solarSystem/mercury.jpg)')
+                $('h1').text("Then have a look at this one!!")
+            }
+            if(event.keyCode == 78) {
+                $('body').css('background-image', 'none')
+                $('body').css('background-color','blue')
+                $('h1').text("SORRY!!!!!")
+            }
+           }
+        </script>
+    </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Fbutterfly&psig=AOvVaw1spvydp8NsxLmrbPmJpFIt&ust=1719912969255000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCKipzJ7FhYcDFQAAAAAdAAAAABAE"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: aqua;
+      }
+      #myVideo {
+        position:relative;
+        /* top: 15%; */
+        margin: auto;
+        min-width: 100%;
+        min-height: 100%;
+      }
+      .hidden {
+        display: none;
+      }
+      h1 {
+        text-align: center;
+        font-family: "Lobster", cursive;
+        color: white;
+      }
+      #panel {
+        background-color: aliceblue;
+        font-size: 20px;
+        font-family: "Lobster", cursive;
+        color: rgb(221, 102, 18);
+      }
+      button {
+        margin: auto;
+        display: block;
+        width: 300px;
+        font-family: "Lobster", cursive;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <audio controls autoplay="true" loop>
+      <source src="./krishna-tune-siddhi-flute-ringtone-download-mobcup-com-co-63013.mp3" type="audio/mp3" />
+    </audio>
+
+    <video autoplay="true" loop id="myVideo" controls>
+      <source src="./vv.mp4" type="video/mp4" />
+    </video>
+
+    <h1 class="hidden">Welcome to the mountains!!!</h1>
+    <button class="hidden">Learn more</button>
+    <div id="panel" class="hidden">
+      Most geologists classify a mountain as a landform that rises at least
+      1,000 feet (300 meters) or more above its surrounding area. A mountain
+      range is a series or chain of mountains that are close together.
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("h1").fadeIn(6000);
+        $("button").fadeIn(6000);
+      });
+      $("button").click(function () {
+        $("#panel").toggle("slow");
+      });
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Fbutterfly&psig=AOvVaw1spvydp8NsxLmrbPmJpFIt&ust=1719912969255000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCKipzJ7FhYcDFQAAAAAdAAAAABAE"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: aqua;
+      }
+      #myVideo {
+        position: relative;
+        top: 20%;
+        margin: auto;
+        min-width: 50%;
+        min-height: 50%;
+        z-index: 0;
+      }
+      audio {
+        display: none;
+      }
+      .words {
+        display: none;
+        position: relative;
+        top: 20px;
+        left: 40px;
+        font-family: "Lobster", cursive;
+        color: fuchsia;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+   <div>
+    <audio autoplay="true" loop controls>
+      <source src="./krishna-tune-siddhi-flute-ringtone-download-mobcup-com-co-63013.ogg" type="audio/ogg">
+      <source src="./krishna-tune-siddhi-flute-ringtone-download-mobcup-com-co-63013.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+   </div>
+
+    <video autoplay="true" loop id="myVideo" controls>
+      <source src="./vv.mp4" type="video/mp4" />
+    </video>
+
+    <span id="s1" class="words">Welcome</span>
+    <span id="s2" class="words">to</span>
+    <span id="s3" class="words">the</span>
+    <span id="s4" class="words">cherry</span>
+    <span id="s5" class="words">blossom</span>
+    <span id="s6" class="words">festival</span>
+    <h1></h1>
+    <script>
+      $(document).ready(function () {
+        $("#s1").fadeIn(3000);
+        $("#s2").fadeIn(5000);
+        $("#s3").fadeIn(7000);
+        $("#s4").fadeIn(9000);
+        $("#s5").fadeIn(11000);
+        $("#s6").fadeIn(13000);
+      });
+      $(document).click(function () {
+        $("video").remove();
+        $("body").css("background-image", "url(cc.jpeg)");
+        $("body").css("background-size", "cover");
+        $("h1").text(
+          "The cherry blossom, or sakura, is the flower of trees in Prunus subgenus Cerasus. Sakura usually refers to flowers of ornamental cherry trees, such as cultivars of Prunus serrulata, not trees grown for their fruit(although these also have blossoms). Cherry blossoms have been described as having a vanilla-like smell, which is mainly attributed to coumarin."
+        );
+        $("h1").css("color", "black");
+      });
+    </script>
+  </body>
+</html>

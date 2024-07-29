@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lano="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h2>Enter The Numbers</h2>
+    <input type="number" id="number" />
+    <input type="submit" value="Shuffle" onclick="shuffle()" />
+    <p id="show"></p>
+    <p id="shuffle"></p>
+    <p id="count"></p>
+    <p id="result"></p>
+    <script>
+      //Golobal variable
+      let shuffleNo = "";
+      function shuffle() {
+        let n = document.getElementById("number").value;
+        //Converts all the numbers to words
+        let number = n
+          .replaceAll("0", "zero")
+          .replaceAll("1", "one")
+          .replaceAll("2", "two")
+          .replaceAll("3", "three")
+          .replaceAll("4", "four")
+          .replaceAll("5", "five")
+          .replaceAll("6", "six")
+          .replaceAll("7", "seven")
+          .replaceAll("8", "eight")
+          .replaceAll("9", "nine");
+
+        document.getElementById("show").innerHTML = "VALUE IS: " + number;
+
+        //Shuffle all the charecters
+        let arr = number.split(""); //converting into array
+        for (let i = 0; i < number.length - 1; i++) {
+          //Its taking random no which will swap with indexes
+          let j = Math.floor(Math.random() * number.length);
+
+          //Swaped the array elements with random indexes
+          let temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+        }
+        shuffleNo = arr.join("");
+
+        document.getElementById("shuffle").innerHTML =
+          "SHUFFLED VALUE IS: " + shuffleNo;
+        console.log(typeof shuffleNo);
+
+        let str = shuffleNo,
+          nineCount = 0,
+          zeroCount = 0,
+          twoCount = 0,
+          fourCount = 0,
+          sixCount = 0,
+          eightCount = 0,
+          oneCount = 0,
+          threeCount = 0,
+          fiveCount = 0,
+          sevenCount = 0,
+          finalResult = {};
+        while (str.includes("z") == true) {
+          str = str
+            .replace("z", "")
+            .replace("e", "")
+            .replace("r", "")
+            .replace("o", "");
+          zeroCount += 1;
+          finalResult["zero"] = zeroCount;
+        }
+        while (str.includes("w") == true) {
+          str = str.replace("t", "").replace("w", "").replace("o", "");
+          twoCount += 1;
+          finalResult["two"] = twoCount;
+        }
+        while (str.includes("u") == true) {
+          str = str
+            .replace("f", "")
+            .replace("o", "")
+            .replace("u", "")
+            .replace("r", "");
+          fourCount += 1;
+          finalResult["four"] = fourCount;
+        }
+        while (str.includes("x") == true) {
+          str = str.replace("s", "").replace("i", "").replace("x", "");
+          sixCount += 1;
+          finalResult["six"] = sixCount;
+        }
+        while (str.includes("g") == true) {
+          str = str
+            .replace("e", "")
+            .replace("i", "")
+            .replace("g", "")
+            .replace("h", "")
+            .replace("t", "");
+          eightCount += 1;
+          finalResult["eight"] = eightCount;
+        }
+        while (str.includes("o") == true) {
+          str = str.replace("o", "").replace("n", "").replace("e", "");
+          oneCount += 1;
+          finalResult["one"] = oneCount;
+        }
+        while (str.includes("h") == true) {
+          str = str
+            .replace("t", "")
+            .replace("h", "")
+            .replace("r", "")
+            .replace("e", "")
+            .replace("e", "");
+          threeCount += 1;
+          finalResult["three"] = threeCount;
+        }
+        while (str.includes("f") == true) {
+          str = str
+            .replace("f", "")
+            .replace("i", "")
+            .replace("v", "")
+            .replace("e", "");
+          fiveCount += 1;
+          finalResult["five"] = fiveCount;
+        }
+        while (str.includes("s") == true) {
+          str = str
+            .replace("s", "")
+            .replace("e", "")
+            .replace("v", "")
+            .replace("e", "")
+            .replace("n", "");
+          sevenCount += 1;
+          finalResult["seven"] = sevenCount;
+        }
+        while (str.includes("i") == true) {
+          str = str
+            .replace("n", "")
+            .replace("i", "")
+            .replace("n", "")
+            .replace("e", "");
+          nineCount += 1;
+          finalResult["nine"] = nineCount;
+        }
+
+        document.getElementById("count").innerHTML = "REPEATED NUMBERS ARE : " +
+          JSON.stringify(finalResult)
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+        .design {
+            background-color: rgb(189, 236, 247);
+            display: flex;
+            justify-content: center;
+            margin-top: 70px;
+
+        }
+        .gap {
+            line-height: 75px;
+        }
+    </style>
+</head>
+<body class="design">
+    <div>
+        <div class="gap">
+            <label for="name" class="form-label">Enter your Name : </label>
+            <input type="text" id="name" aria-describedby="emailHelp"/>
+        </div>
+
+        <div class="gap">
+            <label for="email" class="form-label">Enter your Email ID : </label>
+            <input type="email" id="email" aria-describedby="emailHelp"/>
+        </div>
+       
+
+        <div class="gap">
+            <label for="pwd" class="form-label">Enter your password : </label>
+            <input type="text" id="pwd" aria-describedby="emailHelp"/>
+        </div>
+        
+
+        <div class="gap">
+            <label for="confirmpwd" class="form-label">Re-enter your password : </label>
+            <input type="password" id="confirmpwd" aria-describedby="emailHelp"/>
+            <i class="fa fa-eye" id="togglePassword"></i>
+        </div>
+        <button onclick="registration()">Register</button>
+        
+    </div>
+
+    <script>
+        const icon = document.getElementById("togglePassword");
+      let password = document.getElementById("confirmpwd");
+
+      icon.addEventListener("click", function () {
+        if (password.type === "password") {
+          password.type = "text";
+          icon.classList.add("fa-eye-slash");
+          icon.classList.remove("fa-eye");
+        } else {
+          password.type = "password";
+          icon.classList.add("fa-eye");
+          icon.classList.remove("fa-eye-slash");
+        }
+      })
+
+      function registration() {
+        localStorage.setItem("Users", JSON.stringify(data))
+      }
+    </script>
+
+    
+</body>
+</html>

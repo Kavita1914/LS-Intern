@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background: linear-gradient(to right, #e0f7fa, #80deea);
+        font-family: "Arial", sans-serif;
+        color: #333;
+      }
+
+      .sideDiv {
+        margin-top: 0.5px;
+        background-color: rgb(45, 48, 48);
+        height: 100vh;
+        width: 250px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: width 0.3s;
+      }
+
+      .sideDiv:hover {
+        width: 270px;
+      }
+
+      .profilePhoto {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 2px solid #4caf50;
+        margin-bottom: 10px;
+      }
+
+      .span {
+        display: inline-block;
+        font-size: 15px;
+        color: #ffffff;
+        margin-bottom: 5px;
+      }
+
+      .topDiv {
+        background-color: rgb(45, 48, 48);
+        display: flex;
+        align-items: center;
+        height: 140px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .no-underline {
+        text-decoration: none;
+      }
+
+      .btn {
+        font-size: 25px;
+        margin-top: 20px;
+        color: #ffffff;
+        transition: color 0.3s;
+      }
+
+      .btn:hover {
+        color: #4caf50;
+      }
+
+      .imgDiv {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        width: 100%;
+        opacity: 0.16;
+      }
+
+      .todo-container {
+        height: auto;
+        width: 900px;
+        padding: 20px;
+        margin-left: 30px;
+        margin-top: 40px;
+      }
+
+      #todo-input {
+        width: 70%;
+        height: auto;
+      }
+
+      .btn1 {
+        /* text-align: center;
+        padding: auto; */
+        /* height: 30px;
+        width: 80px; */
+        padding: 3px 10px;
+        font-size: 18px;
+        float: right 100px;
+        /* font-size: 15px; */
+      }
+      .btn2 {
+        margin-left: 30px;
+        padding: 3px 18px;
+        font-size: 18px;
+      }
+
+      .fancy-heading {
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 3rem;
+        margin: 20px 0;
+      }
+
+      .glow {
+        color: rgb(221, 255, 0);
+        text-shadow: 0 0 5px aqua, 0 0 10px rgb(0, 255, 60),
+          0 0 15px rgb(217, 255, 0), 0 0 20px rgb(255, 149, 0),
+          0 0 25px rgb(255, 81, 0);
+        animation: glow 1.5s infinite alternate;
+        transition: transform 0.2s;
+      }
+
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 5px rgb(244, 5, 5);
+        }
+        100% {
+          text-shadow: 0 0 20px rgb(247, 223, 223);
+        }
+      }
+
+      .glow:hover {
+        transform: scale(1.1);
+      }
+
+      .todo-list {
+        margin-top: 35px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.726);
+      }
+
+      .todo-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #e0e0e0;
+        transition: background-color 0.3s;
+      }
+
+      .todo-list li:last-child {
+        border-bottom: none;
+      }
+
+      .todo-list li:hover {
+        background-color: #dddddd;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: rgb(45, 48, 48);
+        color: white;
+        box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      .image {
+        margin-top: 140px;
+        margin-left: 60px;
+        height: 550px;
+        width: 420px;
+      }
+      .spanFixed {
+        padding: 13px 15px;
+        width: 500px;
+        display: flex;
+        align-items: baseline;
+      }
+      /* Styling for todo items */
+      .todo-item {
+        list-style-type: none; /* Remove default list styles */
+        margin-bottom: 10px; /* Add some space between items */
+        padding: 10px; /* Add padding for spacing inside the item */
+      }
+
+      /* Styling for todo item content */
+      .todo-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Styling for buttons */
+      .btn1 {
+        margin-left: 5px; /* Add some space between buttons */
+      }
+      .green-tick {
+        color: green;
+        font-size: 40px;
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topDiv shadow">
+      <div>
+        <span class="span">
+          <div class="profilePhoto"></div>
+          <div><strong>Kavita Kumari</strong></div>
+          <div><strong>Software Developer</strong></div>
+        </span>
+      </div>
+
+      <div style="margin: auto">
+        <h1 class="fancy-heading">
+          <span class="glow"><strong>Your "To-Do" things...</strong></span>
+        </h1>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div class="sideDiv shadow">
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_id-card-icon-3d-render_37297184.png"
+            height="40px"
+            width="40px"
+          />
+          Profile</button
+        ><br />
+        <button
+          type="button"
+          class="btn btn-link no-underline"
+          onclick="leaveButton()"
+        >
+          <img
+            src="./vecteezy_3d-traveller-character-checking-map-on-phone-while-walking_36309449.png"
+            height="40px"
+            width="40px"
+          />
+          Leave</button
+        ><br />
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_3d-gold-metal-check-mark-icon-check-list-button-choice-for_19938291.png"
+            height="30px"
+            width="30px"
+          />
+          To-do list</button
+        ><br />
+        <button type="button" class="btn btn-link no-underline">
+          <img
+            src="./vecteezy_on-and-off-button-icon-shutdown-business-icon-flat_24506330.png"
+            height="30px"
+            width="30px"
+          />
+          Logout</button
+        ><br />
+      </div>
+      <div class="todo-container">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <div>
+            <!-- date picker -->
+            <label for="datepicker"><strong>Select a Date : </strong></label>
+            <input type="date" id="datePicker" name="datePicker" />
+          </div>
+
+          <div>
+            <!-- div to add a "Add Task" button -->
+            <button
+              type="button"
+              class="btn btn-primary btn1"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              id="addTaskButton"
+            >
+              Add Task
+            </button>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="staticBackdrop"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div
+                class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+              >
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                      <strong>Add a new task :</strong>
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <textarea
+                      id="todo-input"
+                      class="form-control w-100"
+                      placeholder="Enter your New To-Do List"
+                      rows="6"
+                    ></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn1"
+                      onclick="addTodo()"
+                      data-bs-dismiss="modal"
+                    >
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn1"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- div to show all the to-do list of selected date -->
+        <div>
+          <ul class="todo-list" id="todo-list"></ul>
+        </div>
+      </div>
+      <img
+        class="image"
+        src="./vecteezy_smiling-young-man-in-casual-shirt-showing-pointing-finger-to_24842427.png"
+      />
+    </div>
+
+    <footer class="footer">
+      <p>
+        &copy; 2024 User Management. Powered by
+        <span style="color: #4bf135">Logic Square</span>
+      </p>
+    </footer>
+    <script>
+      function leaveButton() {
+        window.location.href = "./leavePage.html";
+      }
+
+      // Function to add a new item to the todolist
+      function addTodo() {
+        // Retrieve existing todolist from localStorage, or initialize an empty array
+        let todolist = JSON.parse(localStorage.getItem("todolist")) || [];
+
+        // Get the text entered by the user
+        const newText = document.getElementById("todo-input").value.trim();
+
+        // Check if newText is not empty
+        if (newText !== "") {
+          // Create a new todo object with text and current date
+          const newTodo = {
+            id: Math.random(),
+            text: newText,
+            date: new Date().toLocaleDateString(),
+            done: false, // Mark the task as not done initially
+          };
+
+          // Push the new todo object into the todolist array
+          todolist.push(newTodo);
+          // Store the updated todolist back into localStorage
+          localStorage.setItem("todolist", JSON.stringify(todolist));
+
+          // Clear the input field after adding
+          document.getElementById("todo-input").value = "";
+
+          // Display the updated todolist on the web page
+          displayTodoList();
+        } else {
+          // Handle case where user enters empty text
+          alert("Please enter some text for the todo.");
+        }
+      }
+
+      // Function to display todolist on the web page based on selected date
+      function displayTodoList() {
+        // Retrieve todolist from localStorage
+        const todolist = JSON.parse(localStorage.getItem("todolist")) || [];
+        console.log("todolist", todolist);
+
+        // Get the selected date from the datePicker input
+        const selectedDate = document.getElementById("datePicker").value;
+        const formattedDate = formatDate(selectedDate); // Format the selected date
+
+        // Filter todolist based on selectedDate
+        const filteredList = todolist.filter(
+          (todo) => todo.date === formattedDate
+        );
+
+        // Get the element where you want to display the todolist
+        const todoListElement = document.getElementById("todo-list");
+
+        // Clear any existing content in the todoListElement
+        todoListElement.innerHTML = "";
+
+        // Iterate through the filtered list and create HTML elements to display each todo item
+        filteredList.forEach((todo, index) => {
+          // Create a <li> element for each todo
+          const li = document.createElement("li");
+          li.classList.add("todo-item"); // Add a class for styling
+          li.textContent = `${todo.text} - ${todo.date}`;
+
+          // Create a div to hold text and buttons
+          const divContent = document.createElement("div");
+          divContent.classList.add("todo-content");
+
+          // Create "Done" button initially
+          const btnDone = document.createElement("button");
+          btnDone.setAttribute("type", "button");
+          btnDone.setAttribute("class", "btn btn-success btn1");
+          btnDone.textContent = "Done";
+          console.log("todo.id", todo.id);
+          btnDone.addEventListener("click", () => markAsDone(todo.id)); // Add click event listener
+
+          // Append "Done" button to div
+          divContent.appendChild(btnDone);
+
+          // Create "Remove" button
+          const btnRemove = document.createElement("button");
+          btnRemove.setAttribute("type", "button");
+          btnRemove.setAttribute("class", "btn btn-warning btn1");
+          btnRemove.textContent = "Remove";
+          btnRemove.addEventListener("click", () => removeTodo(todo.id)); // Add click event listener
+
+          // Append buttons to the div
+          divContent.appendChild(btnRemove);
+
+          // If task is marked as done, hide "Done" and "Remove" button
+          if (todo.done) {
+            btnDone.style.display = "none";
+            btnRemove.style.display = "none";
+            const greenTick = document.createElement("span");
+            greenTick.setAttribute("class", "green-tick");
+            greenTick.textContent = "\u2713"; // Unicode character for check mark
+            divContent.appendChild(greenTick);
+          }
+
+          // Append the div to the li
+          li.appendChild(divContent);
+
+          // Append the <li> to the todoListElement
+          todoListElement.appendChild(li);
+        });
+      }
+
+      // Function to mark a todo as done
+      function markAsDone(id) {
+        let todolist = JSON.parse(localStorage.getItem("todolist")) || [];
+
+        // Find the index of the todo item with matching id
+        const index = todolist.findIndex((todo) => todo.id === id);
+
+        if (index !== -1) {
+          todolist[index].done = true; // Mark the task as done
+          localStorage.setItem("todolist", JSON.stringify(todolist));
+          displayTodoList(); // Update the display
+        }
+      }
+
+      // Function to remove a todo item
+      function removeTodo(id) {
+        let todolist = JSON.parse(localStorage.getItem("todolist")) || [];
+
+        // Find the index of the todo item with matching id
+        const index = todolist.findIndex((todo) => todo.id === id);
+
+        if (index !== -1) {
+          todolist.splice(index, 1); // Remove the item at index
+          localStorage.setItem("todolist", JSON.stringify(todolist));
+          displayTodoList(); // Update the display
+        }
+      }
+
+      // Initial display of todolist when the page loads
+      displayTodoList();
+
+      // Function to format the date as M/D/YYYY
+      function formatDate(date) {
+        const d = new Date(date);
+        const month = d.getMonth() + 1; // getMonth() returns 0-based
+        const day = d.getDate();
+        const year = d.getFullYear();
+        return `${month}/${day}/${year}`;
+      }
+
+      // Event listener for when the date picker value changes
+      document
+        .getElementById("datePicker")
+        .addEventListener("change", function () {
+          const selectedDate = this.value; // This is in YYYY-MM-DD format
+
+          // Format the date
+          const formattedDate = formatDate(selectedDate);
+
+          const currentDate = new Date().toLocaleDateString();
+          // console.log("selectedDate", selectedDate);
+          // console.log("formattedDate", formattedDate);
+          // console.log("currentDate", currentDate);
+          // console.log("if", currentDate - formattedDate);
+
+          // Removing "Add Task" button for backdated dates
+          if (currentDate > formattedDate) {
+            document.getElementById("addTaskButton").style.display = "none";
+          } else {
+            // Show the button if the selected date is today or in the future
+            document.getElementById("addTaskButton").style.display = "block";
+          }
+
+          // Display the todolist for the formatted Date
+          displayTodoList();
+        });
+    </script>
+  </body>
+</html>

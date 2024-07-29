@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards</title>
+</head>
+<body>
+<p id="a"></p>
+<p id="b"></p>
+
+<script>
+
+let currentDate = new Date()
+let lastDate = 0
+skinColor = "blue"
+let rewardedCoin = 0
+let count = 0
+
+if ( currentDate - lastDate === 0 ) {
+console.log("coins already rewarded")
+}
+
+else if ( currentDate - lastDate === 1 ) {
+   count += 1
+   if ( count == 6 && skinColor == "blue") {
+    skinColor == "red"
+    count = 0
+   }
+   else if ( count > 5 && skinColor == "red") {
+    count = 1
+   }
+   reward()
+   lastDate = currentDate
+}
+else if ( currentDate - lastDate > 1 ) {
+    count = 1
+    reward()
+    lastDate = currentDate
+}
+
+function reward() {
+    switch(count) {
+
+        case 1: rewardedCoin += 100
+        break
+
+        case 2: rewardedCoin += 200
+        break
+
+        case 3: rewardedCoin += 300
+        break
+
+        case 4: rewardedCoin += 400
+        break
+
+        case 5: rewardedCoin += 500
+        break
+    }
+}
+console.log("pppppp", rewardedCoin);
+console.log("uuuuu", count);
+console.log("oooooo", lastDate);
+
+
+
+
+</script>
+    
+</body>
+</html>

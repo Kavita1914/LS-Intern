@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        height: 200px;
+        width: 200px;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 80%;
+        text-align: center;
+        font-size: 50px;
+      }
+      /* p.style {
+        border-style: double;
+        border-width: 6px;
+        border-radius: 50%;
+        font-size: 30px;
+        text-align: center;
+        margin-left: 420px;
+        width: 50px;
+        height: 40px;
+        color: brown;
+      } */
+      .mainBox {
+        margin-left: 300px;
+        margin-top: 30px;
+        border-style: double;
+        border-radius: 20px;
+        border-width: 10px;
+        border-color: brown;
+        width: 300px;
+        background-color: black;
+      }
+      #box1 {
+        background-color: rgb(142, 60, 60);
+      }
+      #box2 {
+        background-color: rgb(186, 186, 106);
+      }
+      #box3 {
+        background-color: rgb(25, 50, 25);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mainBox">
+      <div class="container" id="box1"></div>
+      <div class="container" id="box2"></div>
+      <div class="container" id="box3"></div>
+    </div>
+    <input
+      style="
+        margin-left: 420px;
+        margin-top: 20px;
+        font-size: 25px;
+        background-color: aqua;
+        border-radius: 20%;
+      "
+      type="button"
+      value="start"
+      id="input"
+      onclick="redSignal()"
+    />
+  </body>
+  <script>
+    const redLight = document.getElementById("box1");
+    const yellowLight = document.getElementById("box2");
+    const greenLight = document.getElementById("box3");
+
+    function redSignal() {
+      yellowLight.style.backgroundColor = ""
+      redLight.style.backgroundColor = "red";
+      var x = 10;
+      const timer = setInterval(() => {
+        x -= 1;
+        if (x == 0 || x > 0) {
+          document.getElementById("box1").innerText = "0" + x;
+        }
+        if (x < 0) {
+          clearInterval(timer);
+        }
+      }, 1000);
+      setTimeout(function () {
+        greenSignal();
+      }, 10000);
+    }
+
+    function yellowSignal() {
+      greenLight.style.backgroundColor = ""
+      yellowLight.style.backgroundColor = "yellow";
+      var x = 3;
+      const timer = setInterval(() => {
+        x -= 1;
+        if (x == 0 || x > 0) {
+          document.getElementById("box2").innerText = "0" + x;
+        }
+        if (x < 0) {
+          clearInterval(timer);
+        }
+      }, 1000);
+      setTimeout(function () {
+        redSignal();
+      }, 3000);
+    }
+
+    function greenSignal() {
+      redLight.style.backgroundColor = ""
+      greenLight.style.backgroundColor = "rgb(39, 241, 39)";
+      var x = 5;
+      const timer = setInterval(() => {
+        x -= 1;
+        if (x == 0 || x > 0) {
+          document.getElementById("box3").innerText = "0" + x;
+        }
+        if (x < 0) {
+          clearInterval(timer);
+        }
+      }, 1000);
+      setTimeout(function () {
+        yellowSignal();
+      }, 5000);
+    }
+  </script>
+</html>

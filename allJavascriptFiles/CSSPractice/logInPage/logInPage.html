@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <!-- CSS libraries -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #4e54c8, #8f94fb);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .login-container {
+        background-color: rgb(176, 176, 236);
+        border-radius: 20px;
+        padding: 20px;
+        width: 400px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .error-message {
+        color: rgb(203, 36, 36);
+        margin-top: 10px;
+      }
+      h2 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background-image: url(./vecteezy_white-background-with-blue-geometric-and-white-line-pattern_7677104-1.jpg);
+    "
+  >
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label">Email ID</label>
+          <input
+            type="email"
+            id="exampleInputEmail1"
+            class="form-control"
+            aria-describedby="emailHelp"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <div class="password-input">
+            <input
+              type="password"
+              id="exampleInputPassword1"
+              class="form-control"
+              required
+            />
+            <i
+              class="fa fa-eye-slash toggle-password"
+              onclick="togglePassword()"
+            ></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dateInput" class="form-label">Date:</label>
+          <input type="date" id="dateInput" class="form-control" />
+        </div>
+        <button type="button" onclick="validData()" class="btn btn-primary">
+          Log in
+        </button>
+        <div class="error-message" id="error"></div>
+      </form>
+    </div>
+
+    <!-- JavaScript libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let rewardedCoin = 0;
+      let count = 0;
+      let skinColor = "blue";
+      let lastDate = null;
+
+      function validData() {
+        let data = JSON.parse(localStorage.getItem("Users")) || [];
+        let emailIDGiven = document.getElementById("exampleInputEmail1").value;
+        let passwordGiven = document.getElementById(
+          "exampleInputPassword1"
+        ).value;
+        let currentDate = document.getElementById("dateInput").value;
+
+        localStorage.setItem("selectedDate", currentDate);
+
+        for (let el of data) {
+          if (emailIDGiven === el.emailID && passwordGiven === el.password) {
+            // loggedIn = true;
+            // count++;
+            // reward();
+            // let current_User = {emailID: emailIDGiven};
+            // lastDate = currentDate;
+            // localStorage.setItem("current_User", JSON.stringify(current_User));
+            // localStorage.setItem("Count", count.toString());
+            // localStorage.setItem("Coins", rewardedCoin.toString());
+            // localStorage.setItem("skinColor", skinColor.toString());
+            if (count === 0 && lastDate === null) {
+              count++
+              reward()
+            }
+
+           else if (currentDate - lastDate === 0) {
+              console.log("coins already rewarded");
+            } else if (currentDate - lastDate === 1) {
+              count += 1;
+              if (count == 6 && skinColor == "blue") {
+                skinColor == "red";
+                count = 0;
+              } else if (count > 5 && skinColor == "red") {
+                count = 1;
+              }
+              reward();
+              lastDate = currentDate;
+            } else if (currentDate - lastDate > 1) {
+              count = 1;
+              reward();
+              lastDate = currentDate;
+            }
+            window.location.href = "./landingPage.html";
+            break;
+          }
+        }
+        if (!loggedIn) {
+          document.getElementById("error").innerHTML =
+            "Invalid email or password!";
+        }
+      }
+
+      function togglePassword() {
+        let passwordField = document.getElementById("exampleInputPassword1");
+        let toggleIcon = document.querySelector(".toggle-password");
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          toggleIcon.classList.remove("fa-eye-slash");
+          toggleIcon.classList.add("fa-eye");
+        } else {
+          passwordField.type = "password";
+          toggleIcon.classList.remove("fa-eye");
+          toggleIcon.classList.add("fa-eye-slash");
+        }
+      }
+
+      function reward() {
+        switch (count) {
+          case 1:
+            rewardedCoin += 100;
+            break;
+          case 2:
+            rewardedCoin += 200;
+            break;
+          case 3:
+            rewardedCoin += 300;
+            break;
+          case 4:
+            rewardedCoin += 400;
+            break;
+          case 5:
+            rewardedCoin += 500;
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
