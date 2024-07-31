@@ -1,0 +1,36 @@
+body {
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+.btn1 {
+    margin-left: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 6px 12px;
+    background-color: #96e484;
+}
+.btn2 {
+    margin-left: 70px;
+    margin-top: 8px;
+    border-radius: 50%;
+    font-size: 16px;
+    padding: 6px 12px;
+    background-color: #e85050;
+}
+.input {
+    margin-top: 50px;
+    height: 90px;
+    width: 300px;
+    border-width: 5px;
+    border-radius: 5%;
+}
+input:hover {
+    background-color: #f5d6f3;
+}
+h3 {
+    color: red;
+}
