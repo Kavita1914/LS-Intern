@@ -1,0 +1,63 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+.mainDiv {
+  background-color: rgb(235, 229, 229);
+  height: 500px;
+  width: 400px;
+  border-radius: 5%;
+  border: 1px solid #ddd8d8;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.568);
+}
+.inputDiv {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+h1 {
+  text-align: center;
+}
+.btn {  
+  margin-left: 170px;
+  margin-top: 50px;
+  border-radius: 10%;
+  font-size: 16px;
+  padding: 8px 10px;
+  background-color: #16dfcb;
+  border-style: none;
+}
+.input {
+  margin-top: 10px;
+  height: 40px;
+  width: 300px;
+  border-width: 3px;
+  border-radius: 5%;
+}
+input:hover {
+  background-color: #f7edf7;
+}
+p {
+  color: red;
+  margin-left: 50px;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
