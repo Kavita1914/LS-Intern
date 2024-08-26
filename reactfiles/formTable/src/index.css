@@ -1,0 +1,35 @@
+h1 {
+  text-align: center;
+  font-size: 40px;
+  text-decoration: underline;
+  color: rgb(255, 0, 0);
+}
+.mainDiv {
+  height: 50px;
+  width: 1000px;
+}
+input {
+  margin: 20px 20px;
+  height: 40px;
+  width: 400px;
+  border-width: 3px;
+  border-radius: 5%;
+  border-color: rgb(255, 0, 157);
+}
+input:hover {
+  background-color: #def6ff;
+}
+.closeBtn {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(255, 30, 0);
+  border-style: none;
+  border-radius: 15%;
+}
+.plusBtn {
+  margin-left: 1360px;
+
+}
+span {
+  color: red;
+}

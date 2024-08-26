@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
@@ -13,6 +14,8 @@ const Login = () => {
         email: false,
         password: false
     })
+
+    const navigate = useNavigate();  // Initialize the navigate function
 
     const handleChange = (event) => {
         const { value, name } = event?.target
@@ -57,8 +60,7 @@ const Login = () => {
                                 }
                             } else {
                                 updatedErrors.email = '*Required'
-                                isFormValid= false
-                                
+                                isFormValid= false                                
                             }
                             setErrors(updatedErrors)
                             break
@@ -87,13 +89,35 @@ const Login = () => {
 
     const handleSubmit = async () => {
         try {
-            await markAllDirty()
-            const isValid = await validateForm(formFields)
+            await markAllDirty();
+            const isValid = await validateForm(formFields);
             console.log("isValid >>", isValid);
-        } catch (error) {
             
+            if (isValid) {
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                
+                // Check if there is a matching user
+                const userIndex = users.findIndex((user) => 
+                    user.email === formFields.email && user.password === formFields.password
+                );
+                
+                if (userIndex !== -1) {
+                    // Update the isLoggedIn flag to true for the found user
+                    users[userIndex].isLoggedIn = true;
+                    
+                    // Save the updated users list back to local storage
+                    localStorage.setItem('users', JSON.stringify(users));
+                    
+                    // Redirect to homepage
+                    navigate('/');  
+                } else {
+                    alert("User doesn't exist");
+                }
+            }
+        } catch (error) {
+            console.error("Error during login:", error);
         }
-    }
+    }    
 
     // console.log("isDirty >>", isDirty);
     console.log("errors >>", errors);
@@ -138,7 +162,14 @@ const Login = () => {
 {isDirty?.password ?
       <p>{errors?.password}</p>: null}
 
+      <div>
       <button className="btn" onClick={handleSubmit}>Log in</button>
+      </div>
+        <div>
+        <Link to="/signup">
+        <button className="btn3">Don't have an account ?<span>  Sign Up</span></button>
+        </Link>      
+        </div>
     </div>
     )
 }
