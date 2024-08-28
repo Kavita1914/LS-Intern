@@ -143,6 +143,7 @@ import HomePage from "./HomePage";
 import Login from "./login";
 import NotFound from "./NotFound";
 import PrivateRoutes from "./PrivateRoutes";
+import Profile from "./Profile";
 import PublicRoutes from "./PublicRoutes";
 import Signup from "./SignUp";
 import {BrowserRouter, Route, Routes} from "react-router-dom"
@@ -160,6 +161,7 @@ const App = () => {
         <Route path= "*" Component={NotFound}/>
         <Route path="/admincontactus" element={<PrivateRoutes Component={AdminContactUs}/>}/>
         <Route path="/adminaboutus" element={<PrivateRoutes Component={AdminAboutUs}/>}/>
+        <Route path="/profile" element={<PrivateRoutes Component={Profile}/>} />
     </Routes>
     </BrowserRouter>
   )

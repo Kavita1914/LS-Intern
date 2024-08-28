@@ -8,10 +8,12 @@ const AboutUs = () => {
 
     useEffect(() => {
             const users = JSON.parse(localStorage.getItem('users')) || [];
-            const currentUser = users.find((user) => user.isLoggedIn === true);
+            const currentUser = users.find((user) => user.isLoggedIn === true );
 
             if (currentUser?.isAdmin) {
+                navigate("/");
                 setIsAdmin(true);
+                
             } else {
                 setIsAdmin(false);
             }
@@ -23,6 +25,7 @@ const AboutUs = () => {
     } else {
         return navigate("/");
     }
+   
 };
 
 export default AboutUs;

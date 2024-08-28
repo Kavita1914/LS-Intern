@@ -13,14 +13,15 @@ const AdminContactUs = () => {
                 setIsAdmin(true);
             } else {
                 setIsAdmin(false);
+                navigate("/");
             }
 
-    }, []);
+    }, [navigate]);
 
     if (isAdmin) {
         return <h1>Admin Contact Us</h1>;
     } else {
-        return navigate("/");
+        return null
     }
 };
 
