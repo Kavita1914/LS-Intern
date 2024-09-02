@@ -4,50 +4,11 @@ import ModalComponent from './ModalComponent';
 const Profile = () => {
 
     const [profile, setProfile] = useState('');
-    // const [postData, setPostData] = useState('');
+    const [updatedProfile, setUpdatedProfile] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    // console.log("postData >>", postData);    
-
-    // const handleclickGet = async () => {
-
-    //     const users = JSON.parse(localStorage.getItem('users')) || [];
-    //     const currentUser = users.find((user) => user.isLoggedIn === true);
-
-    //     const requestData = {
-    //         page: 4,
-    //         limit: 10
-    //     };
-
-    //     try {
-    //         const response = await fetch('https://api-dev.smoothire.com/api/v1/positions', {
-                    
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': `Bearer ${currentUser.token}`
-
-    //         },
-    //         body: JSON.stringify(requestData),
-    //     });
-    //     console.log(response);
-    //     if (!response.ok) {
-    //         throw new Error(`HTTP error! status: ${response.status}`);
-    //     }
-
-    //     const data = await response.json();
-    //     setPostData(data);
-    // } catch (error) {
-    //     setError(error.message);
-    // } finally {
-    //     // setLoading(false);
-    // }
-
-    // }
-
     useEffect(() => {
-
         const fetchProfile = async () => {
 
             const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -63,7 +24,7 @@ const Profile = () => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-
+    
                 const data = await response.json();
                 setProfile(data);
             } catch (error) {
@@ -72,8 +33,9 @@ const Profile = () => {
                 setLoading(false);
             }
         };
+        
         fetchProfile();
-    }, [profile]);
+    }, [updatedProfile]);
 
    if (loading) {
         return <h1 className='httpError'>Loading...</h1>;
@@ -82,7 +44,6 @@ const Profile = () => {
     if (error) {
         return <h1 className='httpError'>Error: {error}</h1>;
     }
-    // console.log("profile", profile);
 
     return (
         <>
@@ -99,7 +60,7 @@ const Profile = () => {
                         <h3>Email : {profile.me.email}</h3>
                         <h3>Role : {profile.me.role}</h3>
                         <h3>phone : {profile.me.phone}</h3>
-                        <ModalComponent first={profile.me.name.first} last={profile.me.name.last} phone={profile.me.phone}/>
+                        <ModalComponent first={profile.me.name.first} last={profile.me.name.last} phone={profile.me.phone} setUpdatedProfile={setUpdatedProfile}/>
                     </div>
                 </div>
             ) : ( <p> No profile data available </p>) }
@@ -108,4 +69,4 @@ const Profile = () => {
     );
 }
 
-export default Profile
+export default Profile;

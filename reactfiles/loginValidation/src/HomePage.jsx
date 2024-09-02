@@ -51,6 +51,10 @@ const HomePage = () => {
     const handleClickProfile = () => {
         navigate("/profile");
     };
+    
+    const handleClickSeePages = () => {
+        navigate("/positions");
+    };
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -103,6 +107,9 @@ const HomePage = () => {
                 </div>
                 <div>
                     <button className="btn4" onClick={handleClickProfile}>Profile</button>
+                </div>
+                <div>
+                    <button className="btn4" onClick={handleClickSeePages}>Positions</button>
                 </div>
                 <div>
                     <button className="btn4" onClick={handleLogout}>Log out</button>

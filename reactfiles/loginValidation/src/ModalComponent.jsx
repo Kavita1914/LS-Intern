@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Spinner, Alert } from 'reactstrap';
 
 function ModalComponent(props) {
-  const { first, last, phone } = props;
+  const { first, last, phone, setUpdatedProfile } = props;
   
   // Initialize state with props values
-  const [editedFirstName, setEditedFirstName] = useState(first || '');
-  const [editedLastName, setEditedLastName] = useState(last || '');
-  const [editedPhone, setEditedPhone] = useState(phone || '');
+  const [editedFirstName, setEditedFirstName] = useState(first);
+  const [editedLastName, setEditedLastName] = useState(last);
+  const [editedPhone, setEditedPhone] = useState(phone);
   const [modal, setModal] = useState(false);
   const [error, setError] = useState('');
 
@@ -50,9 +50,9 @@ function ModalComponent(props) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
-        // Handle successful response here (e.g., update profile in parent component)
-        console.log(data);
+        const data = await response.json()
+        setUpdatedProfile((count) => count + 1)
+        // console.log(data);
         toggle();
 
     } catch (error) {
@@ -71,23 +71,23 @@ function ModalComponent(props) {
         </ModalHeader>
         <ModalBody>          
           <div>
-            <label> First Name : </label>
+            <label><strong> First Name : </strong></label>
             <input className='modalInput' type="text" value={editedFirstName} onChange={handleFirstNameChange} />
           </div>
             <div>
-            <label> Last Name : </label>
+            <label><strong> Last Name : </strong></label>
             <input className='modalInput' type="text" value={editedLastName} onChange={handleLastNameChange} />
           </div>
           <div>
-            <label> Phone No. : </label>
+            <label><strong> Phone No. : </strong></label>
             <input className='modalInput' type="text" value={editedPhone} onChange={handlePhoneChange} />
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={handleSave}>
+          <Button className='btnEdit' onClick={handleSave}>
             Save
           </Button>
-          <Button color="secondary" onClick={toggle}>
+          <Button className='btnCancel' onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>
